@@ -287,19 +287,21 @@ const businessToBecknMethod = async (body) => {
 
     /// UPDTTED CALLS ///////
 
-    const updatedCalls = updatedSession.calls.map((call) => {
-      const message_id = becknPayload.context.message_id;
-      if (call.config === config) {
-        // call.message_id = message_id;
-        call.becknPayload = becknPayload;
-      }
-      if (call.config === `on_${config}`) {
-        call.message_id = message_id;
-      }
-      return call;
-    });
+    if (SERVER_TYPE === "BAP") {
+      const updatedCalls = updatedSession.calls.map((call) => {
+        const message_id = becknPayload.context.message_id;
+        if (call.config === config) {
+          // call.message_id = message_id;
+          call.becknPayload = becknPayload;
+        }
+        if (call.config === `on_${config}`) {
+          call.message_id = message_id;
+        }
+        return call;
+      });
 
-    updatedSession.calls = updatedCalls;
+      updatedSession.calls = updatedCalls;
+    }
 
     /// UPDTTED CALLS ///////
 
