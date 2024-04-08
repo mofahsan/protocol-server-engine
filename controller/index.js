@@ -75,10 +75,10 @@ const validateIncommingRequest = async (body, transaction_id, config, res) => {
       }
     }
 
-    // const schemaValidation = await validateSchema(body, session.schema[config]);
-    // if (!schemaValidation?.status) {
-    //   return res.status(400).send(schemaValidation.message);
-    // }
+    const schemaValidation = await validateSchema(body, session.schema[config]);
+    if (!schemaValidation?.status) {
+      return res.status(400).send(schemaValidation.message);
+    }
 
     console.log("Revieved request:", JSON.stringify(body));
     res.send(ack);
@@ -144,7 +144,7 @@ const handleRequest = async (response, session, sessionId) => {
         });
       }
     } else {
-      let { callback, serviceUrl } = dynamicReponse(
+      let { callback, serviceUrl, sync } = dynamicReponse(
         response,
         session.api[action]
       );
@@ -161,7 +161,7 @@ const handleRequest = async (response, session, sessionId) => {
       }
       const mockResponse = await axios.post(`${url}`, becknPayload);
       if (mockResponse)
-        if (IS_SYNC) {
+        if (sync) {
           businessToBecknMethod(mockResponse.data);
         }
     }
