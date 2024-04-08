@@ -38,57 +38,58 @@ const validateIncommingRequest = async (body, transaction_id, config, res) => {
         return res.status(401).send(signNack);
       }
     }
-    let session = getSession(transaction_id);
 
-    if (!session) {
-      await generateSession({
-        version: body.context.version,
-        country: body?.context?.location?.country?.code,
-        cityCode: body?.context?.location?.city?.code,
-        configName: "metro-flow-1",
-        transaction_id: transaction_id,
-      });
+    let session = null;
+    let sessionId = null;
+
+    if (SERVER_TYPE === "BPP") {
       session = getSession(transaction_id);
+
+      if (!session) {
+        await generateSession({
+          version: body.context.version,
+          country: body?.context?.location?.country?.code,
+          cityCode: body?.context?.location?.city?.code,
+          configName: "metro-flow-1",
+          transaction_id: transaction_id,
+        });
+        session = getSession(transaction_id);
+      }
+    } else {
+      const allSession = getCache();
+      console.log("allSessions", allSession);
+
+      allSession.map((ses) => {
+        const sessionData = getCache(ses);
+        console.log("sessionDat", sessionData.transactionIds);
+        if (sessionData.transactionIds.includes(body.context.transaction_id)) {
+          console.log(" got session>>>>");
+          session = sessionData;
+          sessionId = ses.substring(3);
+        }
+      });
+
+      if (!session) {
+        console.log("No session exists");
+        return res.status(500).send(errorNack);
+      }
     }
 
-    const schemaValidation = await validateSchema(body, session.schema[config]);
-    if (!schemaValidation.status) {
-      return res.status(400).send(schemaValidation.message);
-    }
+    // const schemaValidation = await validateSchema(body, session.schema[config]);
+    // if (!schemaValidation?.status) {
+    //   return res.status(400).send(schemaValidation.message);
+    // }
 
     console.log("Revieved request:", JSON.stringify(body));
     res.send(ack);
-    handleRequest(body);
+    handleRequest(body, session, sessionId);
   } catch (err) {
     console.log(err);
   }
 };
 
-const handleRequest = async (response) => {
+const handleRequest = async (response, session, sessionId) => {
   try {
-    let session = null;
-    let sessionId = null;
-
-    const allSession = getCache();
-    console.log("allSessions", allSession);
-
-    allSession.map((ses) => {
-      const sessionData = getCache(ses);
-      console.log("sessionDat", sessionData.transactionIds);
-      if (
-        sessionData.transactionIds.includes(response.context.transaction_id)
-      ) {
-        console.log(" got session>>>>");
-        session = sessionData;
-        sessionId = ses.substring(3);
-      }
-    });
-
-    if (!session) {
-      console.log("No session exists");
-      return;
-    }
-
     const action = response?.context?.action;
     const messageId = response?.context?.message_id;
     const is_buyer = SERVER_TYPE === "BAP" ? true : false;
@@ -102,14 +103,9 @@ const handleRequest = async (response) => {
 
     // extarct protocol mapping
     // const protocol = mapping[session.configName][action];
-    const protocol = session.protocolCalls[action].protocol;
+    const protocol = session.protocol[action];
     // let becknPayload,updatedSession;
     // mapping/extraction
-    let { callback, serviceUrl } = dynamicReponse(
-      response,
-      session.api[action]
-    );
-    callback = callback ? callback : action;
 
     if (is_buyer) {
       const { result: businessPayload, session: updatedSession } =
@@ -134,8 +130,12 @@ const handleRequest = async (response) => {
 
       insertSession(updatedSession);
 
-      if (IS_SYNC) {
-        await axios.post(`${process.env.BACKEND_SERVER_URL}mapper/ondc`, {
+      if (updatedSession?.schema) {
+        delete updatedSession.schema;
+      }
+
+      if (!IS_SYNC) {
+        await axios.post(`${process.env.BACKEND_SERVER_URL}/${urlEndpint}`, {
           businessPayload,
           updatedSession,
           messageId,
@@ -144,6 +144,12 @@ const handleRequest = async (response) => {
         });
       }
     } else {
+      let { callback, serviceUrl } = dynamicReponse(
+        response,
+        session.api[action]
+      );
+      callback = callback ? callback : action;
+
       const { payload: becknPayload, session: updatedSession } =
         createBecknObject(session, action, response, protocol);
       insertSession(updatedSession);
@@ -167,9 +173,18 @@ const handleRequest = async (response) => {
 };
 
 const businessToBecknWrapper = async (req, res) => {
-  const body = req.body;
-  const { status, message, code } = await businessToBecknMethod(body);
-  res.status(code).send({ status: status, message: message });
+  try {
+    const body = req.body;
+    const { status, message, code } = await businessToBecknMethod(body);
+    console.log("message", message);
+    if (message?.updatedSession?.schema) {
+      delete message.updatedSession.schema;
+    }
+    res.status(code).send({ status: status, message: message });
+  } catch (e) {
+    console.log(">>>>>", e);
+    res.status(500).send({ error: true, message: e?.message || e });
+  }
 };
 
 const businessToBecknMethod = async (body) => {
@@ -192,8 +207,6 @@ const businessToBecknMethod = async (body) => {
     ////////////// session validation ////////////////////
 
     if (session && session.createSession && session.data) {
-      console.log("sending condig name", configName);
-
       await generateSession({
         country: session.data.country,
         cityCode: session.data.cityCode,
@@ -201,8 +214,6 @@ const businessToBecknMethod = async (body) => {
         transaction_id: transactionId,
       });
       session = getSession(transactionId);
-
-      console.log("session", session);
     } else {
       session = getSession(transactionId); // session will be premade with beckn to business usecase
 
@@ -295,30 +306,39 @@ const businessToBecknMethod = async (body) => {
     insertSession(updatedSession);
 
     if (IS_SYNC) {
-      setTimeout(() => {
-        const newSession = getSession(transactionId);
-        let businessPayload = null;
-        let onBecknPayload = null;
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const newSession = getSession(transactionId);
+          let businessPayload = null;
+          let onBecknPayload = null;
 
-        newSession.calls.map((call) => {
-          if (call.config === `on_${config}`) {
-            businessPayload = call.businessPayload;
-            onBecknPayload = call.becknPayload;
+          newSession.calls.map((call) => {
+            if (call.config === `on_${config}`) {
+              businessPayload = call.businessPayload;
+              onBecknPayload = call.becknPayload;
+            }
+          });
+
+          const becknPayloads = {
+            action: becknPayload,
+            on_action: onBecknPayload,
+          };
+
+          if (!businessPayload) {
+            reject("Response timeout");
           }
-        });
 
-        const becknPayloads = {
-          action: becknPayload,
-          on_action: onBecknPayload,
-        };
-
-        return {
-          status: "true",
-          message: { newSession, becknPayload: becknPayloads, businessPayload },
-          code: 200,
-        };
-        //   res.send({ newSession, businessPayload });
-      }, [3000]);
+          resolve({
+            status: "true",
+            message: {
+              updatedSession: newSession,
+              becknPayload: becknPayloads,
+              businessPayload,
+            },
+            code: 200,
+          });
+        }, 3000);
+      });
     } else {
       return {
         status: "true",
@@ -326,13 +346,13 @@ const businessToBecknMethod = async (body) => {
           updatedSession,
           becknPayload,
           becknReponse: response.data,
-          code: 200,
         },
+        code: 200,
       };
       // res.send({ updatedSession, becknPayload, becknReponse: response.data });
     }
   } catch (e) {
-    console.log(">>>>>", e);
+    // console.log(">>>>>", e);
     return { status: "Error", message: errorNack, code: 500 };
     //   res.status(500).send(errorNack);
   }

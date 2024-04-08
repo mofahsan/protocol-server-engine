@@ -55,7 +55,6 @@ const getConfigBasedOnFlow = async (flowId) => {
       let filteredApi = null;
 
       this.config.flows.forEach((flow) => {
-        console.log("FlowId", flow.id, flowId);
         if (flow.id === flowId) {
           const {
             protocol,
@@ -67,8 +66,6 @@ const getConfigBasedOnFlow = async (flowId) => {
             schema,
             api,
           } = flow;
-
-          console.log("protocol", protocol);
 
           filteredProtocol = protocol;
           filteredCalls = calls;
