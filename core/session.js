@@ -3,9 +3,9 @@ const fs = require("fs");
 const yaml = require("yaml");
 const path = require("path");
 const $RefParser = require("@apidevtools/json-schema-ref-parser");
-const {parseBoolean} = require("../utils/utils")
-const loadConfigFromGit = require("./loadConfig")
-const is_loadConfigFromGit = parseBoolean(process.env.is_loadConfigFromGit)
+const { parseBoolean } = require("../utils/utils");
+const loadConfigFromGit = require("./loadConfig");
+const is_loadConfigFromGit = parseBoolean(process.env.is_loadConfigFromGit);
 
 const insertSession = (session) => {
   setCache("jm_" + session.transaction_id, session, 86400);
@@ -18,20 +18,20 @@ const getSession = (transaction_id) => {
 function loadConfig() {
   return new Promise(async (resolve, reject) => {
     try {
-      if(!is_loadConfigFromGit){
-      const config = yaml.parse(
-        fs.readFileSync(path.join(__dirname, "../configs/index.yaml"), "utf8")
-      );
+      if (!is_loadConfigFromGit) {
+        const config = yaml.parse(
+          fs.readFileSync(path.join(__dirname, "../configs/index.yaml"), "utf8")
+        );
 
-      const schema = await $RefParser.dereference(config);
+        const schema = await $RefParser.dereference(config);
 
-      this.config = schema;
+        this.config = schema;
 
-      resolve(schema);
-      }else{
-        const build_spec = await loadConfigFromGit()
+        resolve(schema);
+      } else {
+        const build_spec = await loadConfigFromGit();
 
-        resolve(build_spec[process.env.SERVER_TYPE])
+        resolve(build_spec[process.env.SERVER_TYPE]);
         // resolve()
       }
     } catch (e) {
@@ -45,8 +45,7 @@ const getConfigBasedOnFlow = async (flowId) => {
     try {
       this.config = await loadConfig();
 
-
-      let filteredInput = null;
+      let filteredProtocol = null;
       let filteredCalls = null;
       let filteredDomain = null;
       let filteredSessiondata = null;
@@ -56,29 +55,40 @@ const getConfigBasedOnFlow = async (flowId) => {
       let filteredApi = null;
 
       this.config.flows.forEach((flow) => {
+        console.log("FlowId", flow.id, flowId);
         if (flow.id === flowId) {
-          const { input, calls, domain, sessionData, additioalFlows, summary, schema,api } =
-            flow;
-          filteredInput = input;
+          const {
+            protocol,
+            calls,
+            domain,
+            sessionData,
+            additioalFlows,
+            summary,
+            schema,
+            api,
+          } = flow;
+
+          console.log("protocol", protocol);
+
+          filteredProtocol = protocol;
           filteredCalls = calls;
           filteredDomain = domain;
           filteredSessiondata = sessionData;
           filteredAdditionalFlows = additioalFlows || [];
           filteredsummary = summary;
-          filteredSchema = schema,
-          filteredApi = api
+          (filteredSchema = schema), (filteredApi = api);
         }
       });
 
       resolve({
         filteredCalls,
-        filteredInput,
+        filteredProtocol,
         filteredDomain,
         filteredSessiondata,
         filteredAdditionalFlows,
         filteredsummary,
         filteredSchema,
-        filteredApi
+        filteredApi,
       });
     } catch (err) {
       console.log("error", err);
@@ -88,18 +98,17 @@ const getConfigBasedOnFlow = async (flowId) => {
 
 async function generateSession(session_body) {
   return new Promise(async (resolve, reject) => {
-    const { version, country, cityCode, transaction_id, configName } =
-      session_body;
+    const { country, cityCode, transaction_id, configName } = session_body;
 
     const {
       filteredCalls,
-      filteredInput,
+      filteredProtocol,
       filteredDomain,
       filteredSessiondata,
       filteredAdditionalFlows,
       filteredsummary,
       filteredSchema,
-      filteredApi
+      filteredApi,
     } = await getConfigBasedOnFlow(configName);
 
     const session = {
@@ -112,11 +121,11 @@ async function generateSession(session_body) {
       ...filteredSessiondata,
       currentTransactionId: transaction_id,
       transactionIds: [transaction_id],
-      input: filteredInput,
-      protocolCalls: filteredCalls,
+      protocol: filteredProtocol,
+      calls: filteredCalls,
       additioalFlows: filteredAdditionalFlows,
-      schema : filteredSchema,
-      api:filteredApi
+      schema: filteredSchema,
+      api: filteredApi,
     };
 
     insertSession(session);
