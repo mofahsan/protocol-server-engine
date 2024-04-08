@@ -4,8 +4,9 @@ const yaml = require("yaml");
 const path = require("path");
 const $RefParser = require("@apidevtools/json-schema-ref-parser");
 const { parseBoolean } = require("../utils/utils");
-const loadConfigFromGit = require("./loadConfig");
-const is_loadConfigFromGit = parseBoolean(process.env.is_loadConfigFromGit);
+const loadConfigFromUrl = require("./loadConfig");
+const localConfig = parseBoolean(process.env.localConfig);
+const SERVER_TYPE = process.env.SERVER_TYPE 
 
 const insertSession = (session) => {
   setCache("jm_" + session.transaction_id, session, 86400);
@@ -18,7 +19,7 @@ const getSession = (transaction_id) => {
 function loadConfig() {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!is_loadConfigFromGit) {
+      if (localConfig) {
         const config = yaml.parse(
           fs.readFileSync(path.join(__dirname, "../configs/index.yaml"), "utf8")
         );
@@ -27,11 +28,11 @@ function loadConfig() {
 
         this.config = schema;
 
-        resolve(schema);
+        resolve(schema[SERVER_TYPE]);
       } else {
-        const build_spec = await loadConfigFromGit();
+        const build_spec = await loadConfigFromUrl();
 
-        resolve(build_spec[process.env.SERVER_TYPE]);
+        resolve(build_spec[SERVER_TYPE]);
         // resolve()
       }
     } catch (e) {

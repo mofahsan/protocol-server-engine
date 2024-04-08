@@ -1,13 +1,14 @@
 protocol:
-
   search:
-    sessionData: 
+    sessionData:
+      - beckn_key: bap_id
+        value: data.context.bap_id
       - beckn_key: bap_uri
         value: data.context.bap_uri
       - beckn_key: cityCode
         value: data.context.location.city.code || session.cityCode
-      - beckn_key: bap_id
-        value: data.context.bap_id
+      - beckn_key: countryCode
+        value: data.context.location.country.code || session.countryCode
 
     mapping:
       - beckn_key: context.domain
@@ -26,6 +27,8 @@ protocol:
         value: data.context.action
       - beckn_key: context.location.city.code
         value: session.cityCode
+      - beckn_key: context.location.country.code
+        value: session.countryCode
       - beckn_key: context.ttl
         value: data.context.ttl
 
@@ -61,7 +64,6 @@ protocol:
       - beckn_key: context.action
         value: action
 
-
       - beckn_key: message.catalog.descriptor.name
         value: data.name
       - beckn_key: message.catalog.descriptor.images
@@ -83,7 +85,7 @@ protocol:
         value: data.metro_starttime     || session.metro_starttime
       - beckn_key: message.catalog.providers[0].time.range.end
         value: data.metro_endtime       || session.metro_endtime
-        
+
       - beckn_key: message.catalog.providers[0].payments[0].tags
         value: data.payments_tags       || session.payment_tags
         compute: buildTags(data.payments_tags || session.payment_tags)
@@ -94,11 +96,8 @@ protocol:
       - beckn_key: message.catalog.providers[0].payments[0].collected_by
         value: data.payment_collectedby || session.collectedBy
 
-
   select:
-    sessionData: 
-      - beckn_key: bap_uri
-        value: data.context.bap_uri
+    sessionData:
       - beckn_key: itemId
         value: data.message.order.items[0].id
 
@@ -132,7 +131,7 @@ protocol:
 
       - beckn_key: message.order.items[0].id
         value: data.message.order.items[0].id
-      
+
   on_select:
     mapping:
       - beckn_key: context.bap_id
@@ -164,7 +163,6 @@ protocol:
 
       - beckn_key: message.order.items
         value: data.metro_items
-      
 
       - beckn_key: message.order.provider.id
         value: data.metro_id            ||session.metro_id
@@ -181,7 +179,7 @@ protocol:
         value: data.trips
       - beckn_key: message.order.quote.price.value
         value: data.price
-      - beckn_key: m ssage.order.quote.price.currency
+      - beckn_key: message.order.quote.price.currency
         value: session.currency
       - beckn_key: message.order.cancellation_terms
         value: data.cancellation_terms || session.cancellation_terms
@@ -191,7 +189,6 @@ protocol:
       - beckn_key: message.order.quote.breakup
         value: data.breakup
 
-
   init:
     sessionData:
       - beckn_key: bankCode
@@ -200,8 +197,6 @@ protocol:
         value: data.message.order.payments[0].collected_by === 'BAP' && data.message.order.payments[0].params.bank_account_number || session.bankAccountNumber
       - beckn_key: virtualPaymentAddress
         value: data.message.order.payments[0].collected_by === 'BAP' && data.message.order.payments[0].params.virtual_payment_address || session.virtualPaymentAddress
-      - beckn_key: bap_uri
-        value: data.context.bap_uri
 
     mapping:
       - beckn_key: context.bap_id
@@ -235,9 +230,6 @@ protocol:
         value: data.message.order.items[0].id
 
   on_init:
-
-
-
     mapping:
       - beckn_key: context.bap_id
         value: session.bap_id
@@ -266,11 +258,11 @@ protocol:
       - beckn_key: context.action
         value: action
 
-#items (direct)
+      #items (direct)
       - beckn_key: message.order.items
         value: data.metro_items
-      
-#provider
+
+      #provider
       - beckn_key: message.order.provider.id
         value: data.metro_id            ||session.metro_id
       - beckn_key: message.order.provider.descriptor.name
@@ -282,19 +274,18 @@ protocol:
       - beckn_key: message.order.provider.time.range.end
         value: data.metro_endtime       || session.metro_endtime
 
-#fulfillments (direct)
+      #fulfillments (direct)
       - beckn_key: message.order.fulfillments
         value: data.trips
 
-#cancellation terms && tags
+      #cancellation terms && tags
       - beckn_key: message.order.cancellation_terms
         value: data.cancellation_terms || session.cancellation_terms
       - beckn_key: message.order.tags
         value: data.tags || session.tags
         compute: buildTags(data.tags    || session.tags)
 
-
-#billing 
+      #billing
       - beckn_key: message.order.billing.name
         value: data.billing_name
       - beckn_key: message.order.billing.phone
@@ -302,14 +293,14 @@ protocol:
       - beckn_key: message.order.billing.email
         value: data.billing_email
 
-#quote
+      #quote
       - beckn_key: message.order.quote.price.value
         value: data.price
       - beckn_key: message.order.quote.price.currency
         value: session.currency
       - beckn_key: message.order.quote.breakup
         value: data.breakup
-#payments
+      #payments
 
       - beckn_key: message.order.payments[0].id
         value: data.payment_id
@@ -320,11 +311,11 @@ protocol:
       - beckn_key: message.order.payments[0].type
         value: data.payment_type || session.payment_type
       - beckn_key: message.order.payments[0].params.bank_code
-        value: data.bankCode || session.bankCode   
+        value: data.bankCode || session.bankCode
       - beckn_key: message.order.payments[0].params.bank_account_number
-        value: data.bankAccountNumber || session.bankAccountNumber   
+        value: data.bankAccountNumber || session.bankAccountNumber
       - beckn_key: message.order.payments[0].params.virtual_payment_address
-        value: data.virtualPaymentAddress || session.virtualPaymentAddress    
+        value: data.virtualPaymentAddress || session.virtualPaymentAddress
       - beckn_key: message.order.payments[0].tags
         value: data.payments_tags || session.payment_tags
         compute: buildTags({ ...session.payment_tags,  ...data.payment_tags })
@@ -361,10 +352,8 @@ protocol:
       - beckn_key: context.action
         value: action
 
-
       - beckn_key: message.order.items[0].id
         value: data.message.order.items[0].id
-
 
   on_confirm:
     sessionData:
@@ -402,7 +391,7 @@ protocol:
       - beckn_key: context.action
         value: action
 
-#items (direct)
+      #items (direct)
       - beckn_key: message.order.items
         value: data.metro_items
 
@@ -416,7 +405,7 @@ protocol:
       - beckn_key: message.order.status
         value: data.order_status
 
-#provider
+      #provider
       - beckn_key: message.order.provider.id
         value: data.metro_id            ||session.metro_id
       - beckn_key: message.order.provider.descriptor.name
@@ -428,14 +417,11 @@ protocol:
       - beckn_key: message.order.provider.time.range.end
         value: data.metro_endtime       || session.metro_endtime
 
-
-#fulfillments (direct)
+      #fulfillments (direct)
       - beckn_key: message.order.fulfillments
         value: data.trips
 
-
-
-#billing 
+      #billing
       - beckn_key: message.order.billing.name
         value: data.billing_name
       - beckn_key: message.order.billing.phone
@@ -443,7 +429,7 @@ protocol:
       - beckn_key: message.order.billing.email
         value: data.billing_email
 
-#quote
+      #quote
       - beckn_key: message.order.quote.price.value
         value: data.price
       - beckn_key: message.order.quote.price.currency
@@ -451,7 +437,7 @@ protocol:
       - beckn_key: message.order.quote.breakup
         value: data.breakup
 
-#payments
+      #payments
 
       - beckn_key: message.order.payments[0].id
         value: data.payment_id
@@ -462,22 +448,22 @@ protocol:
       - beckn_key: message.order.payments[0].type
         value: data.payment_type || session.payment_type
       - beckn_key: message.order.payments[0].params.bank_code
-        value: data.bankCode || session.bankCode   
+        value: data.bankCode || session.bankCode
       - beckn_key: message.order.payments[0].params.currency
-        value: data.currency || session.currency  
+        value: data.currency || session.currency
       - beckn_key: message.order.payments[0].params.amount
         value: data.amount
       - beckn_key: message.order.payments[0].params.transaction_id
-        value:  session.currentTransactionId  
+        value: session.currentTransactionId
       - beckn_key: message.order.payments[0].params.bank_account_number
-        value: data.bankAccountNumber || session.bankAccountNumber   
+        value: data.bankAccountNumber || session.bankAccountNumber
       - beckn_key: message.order.payments[0].params.virtual_payment_address
-        value: data.virtualPaymentAddress || session.virtualPaymentAddress    
+        value: data.virtualPaymentAddress || session.virtualPaymentAddress
       - beckn_key: message.order.payments[0].tags
         value: data.payments_tags || session.payment_tags
         compute: buildTags({ ...session.payment_tags,  ...data.payment_tags })
 
-#tags
+      #tags
       - beckn_key: message.order.tags
         value: data.tags || session.tags
         compute: buildTags(data.tags    || session.tags)
@@ -514,13 +500,7 @@ protocol:
       - beckn_key: message.order_id
         value: data.message.order_id
 
-
-
-# on calls start here
-
-
-
-
+  # on calls start here
 
   on_status:
     mapping:
@@ -550,12 +530,11 @@ protocol:
         value: session.ttl
       - beckn_key: context.action
         value: action
-      
 
       - beckn_key: message.order.id
-        value: data.order_id     
-        
-#billing 
+        value: data.order_id
+
+      #billing
       - beckn_key: message.order.billing.name
         value: session.billing_name
       - beckn_key: message.order.billing.phone
@@ -569,7 +548,7 @@ protocol:
       - beckn_key: message.order.fulfillments
         value: data.trips
 
-#payments
+      #payments
 
       - beckn_key: message.order.payments[0].id
         value: data.payment_id
@@ -580,33 +559,32 @@ protocol:
       - beckn_key: message.order.payments[0].type
         value: data.payment_type || session.payment_type
       - beckn_key: message.order.payments[0].params.bank_code
-        value: data.bankCode || session.bankCode   
+        value: data.bankCode || session.bankCode
       - beckn_key: message.order.payments[0].params.currency
-        value: data.currency || session.currency  
+        value: data.currency || session.currency
       - beckn_key: message.order.payments[0].params.amount
         value: data.amount
       - beckn_key: message.order.payments[0].params.transaction_id
-        value:  session.currentTransactionId  
+        value: session.currentTransactionId
       - beckn_key: message.order.payments[0].params.bank_account_number
-        value: data.bankAccountNumber || session.bankAccountNumber   
+        value: data.bankAccountNumber || session.bankAccountNumber
       - beckn_key: message.order.payments[0].params.virtual_payment_address
-        value: data.virtualPaymentAddress || session.virtualPaymentAddress    
+        value: data.virtualPaymentAddress || session.virtualPaymentAddress
       - beckn_key: message.order.payments[0].tags
         value: data.payments_tags || session.payment_tags
         compute: buildTags({ ...session.payment_tags,  ...data.payment_tags })
 
-#tags
+      #tags
       - beckn_key: message.order.tags
         value: data.tags || session.tags
         compute: buildTags(data.tags    || session.tags)
 
-  
       - beckn_key: message.order.updated_at
         value: data.order_updated_at
       - beckn_key: message.order.items
-        value: data.metro_items  
+        value: data.metro_items
       - beckn_key: message.order.id
-        value: data.order_id  
+        value: data.order_id
       - beckn_key: message.order.quote.price.value
         value: data.price
       - beckn_key: message.order.quote.price.currency
@@ -614,8 +592,7 @@ protocol:
       - beckn_key: message.order.quote.breakup
         value: data.breakup
 
-
-#provider
+      #provider
       - beckn_key: message.order.provider.id
         value: data.metro_id            ||session.metro_id
       - beckn_key: message.order.provider.descriptor.name
@@ -627,21 +604,18 @@ protocol:
       - beckn_key: message.order.provider.time.range.end
         value: data.metro_endtime       || session.metro_endtime
       - beckn_key: message.order.status
-        value: data.order_status  
+        value: data.order_status
       # - beckn_key: message.order.provider.id
-      #   value: data.provider_id     
+      #   value: data.provider_id
       # - beckn_key: message.order.provider.descriptor.name
-      #   value: data.provider_descriptor_name   
+      #   value: data.provider_descriptor_name
       # - beckn_key: message.order.provider.descriptor.images
-      #   value: data.provider_descriptor_images  
+      #   value: data.provider_descriptor_images
 
       # - beckn_key: message.order.provider.time.range.start
       #   value: data.provider_time_range_start
       # - beckn_key: message.order.provider.time.range.end
       #   value: data.provider_time_range_end
-
-
-
 
       # - beckn_key: message.order.cancellation_terms
       #   value: data.cancellation_terms
@@ -693,8 +667,6 @@ protocol:
       # - beckn_key: message.order.payments.updated_at
       #   value: data.updated_at
 
-
-
   search_route:
     mapping:
       - beckn_key: context.bap_id
@@ -725,7 +697,6 @@ protocol:
       - beckn_key: message.intent.payment.tags
         value: data.paymentTagsSearch
         compute: buildTags(data.paymentTagsSearch)
-
 
   on_search_route:
     mapping:

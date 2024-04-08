@@ -1,0 +1,138 @@
+flows:
+  - summary: Metro - Station Code Based Flow
+    id: metro-flow-1
+    domain: ONDC:TRV11
+    sessionData:
+      bpp_uri: "https://mobility-staging.ondc.org/seller/"
+      bpp_id: "mobility-staging.ondc.org"
+      collectedBy: BAP
+      bankAccountNumber: "xxxxxxxxxxxxxx"
+      virtualPaymentAddress: "9988199772@okicic"
+      bankCode: "XXXXXXXX"
+      metro_id: "1"
+      categories:
+        - descriptor:
+            name: Ticket
+            code: TICKET
+          id: C1
+        - descriptor:
+            name: Pass
+            code: PASS
+          id: C2
+      metro_starttime: "2023-09-14T05:30:00.000Z"
+      metro_endtime: "2023-09-14T23:30:00.000Z"
+      metro_images:
+        - url: https://delhimetrorail.com/logos/logo.ico
+      metro_name: "Delhi Metro Rail Limited"
+      currency: INR
+      payment_tags:
+        BUYER_FINDER_FEES:
+          display: false
+          # BUYER_FINDER_FEES_TYPE: percent-annualized
+          BUYER_FINDER_FEES_PERCENTAGE: "1"
+        SETTLEMENT_TERMS:
+          display: false
+          SETTLEMENT_WINDOW: PT30D
+          SETTLEMENT_BASIS: INVOICE_RECEIPT
+          MANDATORY_ARBITRATION: "TRUE"
+          COURT_JURISDICTION: New Delhi
+          STATIC_TERMS: "https://api.example-bpp.com/booking/term"
+        SETTLEMENT_DETAILS:
+          display: false
+          SETTLEMENT_TYPE: UPI
+      tags:
+        SCHEDULED_INFO:
+          display: false
+          GTFS: https://metro-transit/gtfs-realtime
+
+      cancellation_terms:
+        - external_ref:
+            mimetype: text/html
+            url: https://transitsolutions.com/mf/tnc.html
+      payment_type: PRE-ORDER
+    protocol:
+      $ref: ./metro-flow-1/protocolMapping.yaml#/protocol
+    schema:
+      $ref: ../schema/TRV/index.yaml
+    api:
+      search:
+        default:
+          callback: "on_search"
+        get_all_station_codes:
+          condition:
+              operation:
+                type: AND
+                input:
+                  value:
+                  - operation:
+                      type: EQUAL
+                      title: Check search message code
+                      input:
+                        value:
+                          - operation:
+                              type: READ
+                              input:
+                                value: "req_body.context.action"
+                          - search
+          service_url: http://localhost:5500/getallstationcode
+      select:
+        default:
+          callback: "on_select"
+        get_all_station_codes:
+          condition:
+              operation:
+                type: AND
+                input:
+                  value:
+                  - operation:
+                      type: EQUAL
+                      title: Check search message code
+                      input:
+                        value:
+                          - operation:
+                              type: READ
+                              input:
+                                value: "req_body.context.action"
+                          - select
+          service_url: http://localhost:5500/getfare
+      init:
+        default:
+          callback: "on_init"
+        get_all_station_codes:
+          condition:
+              operation:
+                type: AND
+                input:
+                  value:
+                  - operation:
+                      type: EQUAL
+                      title: Check search message code
+                      input:
+                        value:
+                          - operation:
+                              type: READ
+                              input:
+                                value: "req_body.context.action"
+                          - init
+          service_url: http://localhost:5500/getfare
+      confirm:
+        default:
+          callback: "on_confirm"
+        get_all_station_codes:
+          condition:
+              operation:
+                type: AND
+                input:
+                  value:
+                  - operation:
+                      type: EQUAL
+                      title: Check search message code
+                      input:
+                        value:
+                          - operation:
+                              type: READ
+                              input:
+                                value: "req_body.context.action"
+                          - confirm
+          service_url: http://localhost:5500/confirmticket
+ 

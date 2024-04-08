@@ -1,0 +1,17 @@
+flows:
+  - summary: Metro - Station Code Based Flow
+    id: metro-flow-1
+    domain: ONDC:TRV11
+    shouldDispaly: true
+    sessionData:
+      version: "2.0.0"
+      collectedBy: BAP
+      bankAccountNumber: "123456789"
+      virtualPaymentAddress: "adasd@okiciic"
+      bankCode: "fj3jf9ij3f02"
+    protocol:
+      $ref: ./metro-flow-1/protocolMapping.yaml#/protocol
+    calls:
+      $ref: ./metro-flow-1/calls.yaml#/calls
+    schema:
+      $ref: ../schema/TRV/index.yaml

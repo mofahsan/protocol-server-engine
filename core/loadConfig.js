@@ -6,7 +6,7 @@ branchName = process.env.branchName;
 const url = `${process.env.config_url}`;
 // ${branchName}`;
 
-async function loadConfigFromGit() {
+async function loadConfigFromUrl() {
   return new Promise(async (resolve, reject) => {
     try {
       const response = await axios.get(url);
@@ -31,4 +31,4 @@ function getStringAfterEquals(inputString) {
   }
 }
 
-module.exports = loadConfigFromGit;
+module.exports = loadConfigFromUrl;
