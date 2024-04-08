@@ -2,12 +2,12 @@ protocol:
 
   search:
     sessionData: 
-      - beckn_key: bap_id
-        value: data.context.bap_id
       - beckn_key: bap_uri
         value: data.context.bap_uri
       - beckn_key: cityCode
         value: data.context.location.city.code || session.cityCode
+      - beckn_key: bap_id
+        value: data.context.bap_id
 
     mapping:
       - beckn_key: context.domain
@@ -97,6 +97,8 @@ protocol:
 
   select:
     sessionData: 
+      - beckn_key: bap_uri
+        value: data.context.bap_uri
       - beckn_key: itemId
         value: data.message.order.items[0].id
 
@@ -179,7 +181,7 @@ protocol:
         value: data.trips
       - beckn_key: message.order.quote.price.value
         value: data.price
-      - beckn_key: message.order.quote.price.currency
+      - beckn_key: m ssage.order.quote.price.currency
         value: session.currency
       - beckn_key: message.order.cancellation_terms
         value: data.cancellation_terms || session.cancellation_terms
@@ -198,7 +200,9 @@ protocol:
         value: data.message.order.payments[0].collected_by === 'BAP' && data.message.order.payments[0].params.bank_account_number || session.bankAccountNumber
       - beckn_key: virtualPaymentAddress
         value: data.message.order.payments[0].collected_by === 'BAP' && data.message.order.payments[0].params.virtual_payment_address || session.virtualPaymentAddress
-        
+      - beckn_key: bap_uri
+        value: data.context.bap_uri
+
     mapping:
       - beckn_key: context.bap_id
         value: session.bap_id

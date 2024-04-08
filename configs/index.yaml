@@ -67,13 +67,200 @@ flows:
       payment_type: PRE-ORDER
         
     input:
-      $ref: ./json_mapper/configs/metro-flow-1/input.yaml
+      $ref: ./configs/metro-flow-1/input.yaml
     protocol:
-      $ref: ./json_mapper/configs/metro-flow-1/protocolMapping.yaml
+      $ref: ./configs/metro-flow-1/protocolMapping.yaml
     calls:
-      $ref: ./json_mapper/configs/metro-flow-1/protocolCalls.yaml
+      $ref: ./configs/metro-flow-1/protocolCalls.yaml
+    # api:
+    #   search:
+    #     default:
+    #       callback: "on_search"
+    #     get_all_station_codes:
+    #       condition:
+    #           operation:
+    #             type: AND
+    #             input:
+    #               value:
+    #               - operation:
+    #                   type: EQUAL
+    #                   title: Check search message code
+    #                   input:
+    #                     value:
+    #                       - operation:
+    #                           type: READ
+    #                           input:
+    #                             value: "req_body.context.actions"
+    #                       - undefined
+    #               - operation:
+    #                     type: EQUAL
+    #                     title: Check search message code
+    #                     input:
+    #                       value:
+    #                         - operation:
+    #                             type: READ
+    #                             input:
+    #                               value: "req_body.context.domain2"
+    #                         - "undefined"
+    #               - operation:
+    #                     type: EQUAL
+    #                     title: Check search message code
+    #                     input:
+    #                       value:
+    #                         - operation:
+    #                             type: READ
+    #                             input:
+    #                               value: "req_body.context.version22"
+    #                         - undefined
+    #       callback: "getallstationcode"
+    #       service_url: http://localhost:5500
+    #   select:
+    #     default:
+    #       callback: "on_select"
+    #     get_all_station_codes:
+    #       condition:
+    #           operation:
+    #             type: AND
+    #             input:
+    #               value:
+    #               - operation:
+    #                   type: EQUAL
+    #                   title: Check search message code
+    #                   input:
+    #                     value:
+    #                       - operation:
+    #                           type: READ
+    #                           input:
+    #                             value: "req_body.context.action"
+    #                       - select
+    #       callback: "getfare"
+    #       service_url: http://localhost:5500
+    #   init:
+    #     default:
+    #       callback: "on_init"
+    #     get_all_station_codes:
+    #       condition:
+    #           operation:
+    #             type: AND
+    #             input:
+    #               value:
+    #               - operation:
+    #                   type: EQUAL
+    #                   title: Check search message code
+    #                   input:
+    #                     value:
+    #                       - operation:
+    #                           type: READ
+    #                           input:
+    #                             value: "req_body.context.action"
+    #                       - init
+    #       callback: "getfare"
+    #       service_url: http://localhost:5500
+    #   confirm:
+    #     default:
+    #       callback: "on_confirm"
+    #     get_all_station_codes:
+    #       condition:
+    #           operation:
+    #             type: AND
+    #             input:
+    #               value:
+    #               - operation:
+    #                   type: EQUAL
+    #                   title: Check search message code
+    #                   input:
+    #                     value:
+    #                       - operation:
+    #                           type: READ
+    #                           input:
+    #                             value: "req_body.context.action"
+    #                       - confirm
+    #       callback: "confirmticket"
+    #       service_url: http://localhost:5500
+    api:
+      search:
+        default:
+          callback: "on_search"
+        get_all_station_codes:
+          condition:
+              operation:
+                type: AND
+                input:
+                  value:
+                  - operation:
+                      type: EQUAL
+                      title: Check search message code
+                      input:
+                        value:
+                          - operation:
+                              type: READ
+                              input:
+                                value: "req_body.context.action"
+                          - search
+          service_url: http://localhost:5500/getallstationcode
+      select:
+        default:
+          callback: "on_select"
+        get_all_station_codes:
+          condition:
+              operation:
+                type: AND
+                input:
+                  value:
+                  - operation:
+                      type: EQUAL
+                      title: Check search message code
+                      input:
+                        value:
+                          - operation:
+                              type: READ
+                              input:
+                                value: "req_body.context.action"
+                          - select
+          service_url: http://localhost:5500/getfare
+      init:
+        default:
+          callback: "on_init"
+        get_all_station_codes:
+          condition:
+              operation:
+                type: AND
+                input:
+                  value:
+                  - operation:
+                      type: EQUAL
+                      title: Check search message code
+                      input:
+                        value:
+                          - operation:
+                              type: READ
+                              input:
+                                value: "req_body.context.action"
+                          - init
+          service_url: http://localhost:5500/getfare
+      confirm:
+        default:
+          callback: "on_confirm"
+        get_all_station_codes:
+          condition:
+              operation:
+                type: AND
+                input:
+                  value:
+                  - operation:
+                      type: EQUAL
+                      title: Check search message code
+                      input:
+                        value:
+                          - operation:
+                              type: READ
+                              input:
+                                value: "req_body.context.action"
+                          - confirm
+          service_url: http://localhost:5500/confirmticket
+ 
     schema:
-      $ref: ./json_mapper/schema/TRV/index.yaml
+      $ref: ./schema/TRV/index.yaml
     additioalFlows:
       - key: metro cancel flow
         value: metro-cancel-flow-1
@@ -85,11 +272,11 @@ flows:
     id: metro-cancel-flow-1
     domain: ONDC:TRV11
     input:
-      $ref: ./json_mapper/configs/metro-cancel-flow-1/input.yaml
+      $ref: ./configs/metro-cancel-flow-1/input.yaml
     protocol:
-      $ref: ./json_mapper/configs/metro-cancel-flow-1/protocolMapping.yaml
+      $ref: ./configs/metro-cancel-flow-1/protocolMapping.yaml
     calls:
-      $ref: ./json_mapper/configs/metro-cancel-flow-1/protocolCalls.yaml
+      $ref: ./configs/metro-cancel-flow-1/protocolCalls.yaml
   - summary: Metro - Station Code Based Flow(without select call)
     id: metro-flow-2
     domain: ONDC:TRV11
@@ -99,19 +286,19 @@ flows:
       virtualPaymentAddress: "adasd@okiciic"
       bankCode: "fj3jf9ij3f02"
     input:
-      $ref: ./json_mapper/configs/metro-flow-2/input.yaml
+      $ref: ./configs/metro-flow-2/input.yaml
     protocol:
-      $ref: ./json_mapper/configs/metro-flow-2/protocolMapping.yaml
+      $ref: ./configs/metro-flow-2/protocolMapping.yaml
     calls:
-      $ref: ./json_mapper/configs/metro-flow-2/protocolCalls.yaml
+      $ref: ./configs/metro-flow-2/protocolCalls.yaml
   - summary: on demand complete flow
     domain: ONDC:TRV10
     id: ondemand-flow-1
     input:
-      $ref: ./json_mapper/configs/ondemand-flow-1/input.yaml
+      $ref: ./configs/ondemand-flow-1/input.yaml
     protocol:
-      $ref: ./json_mapper/configs/ondemand-flow-1/protocolMapping.yaml
+      $ref: ./configs/ondemand-flow-1/protocolMapping.yaml
     calls:
-      $ref: ./json_mapper/configs/ondemand-flow-1/protocolCalls.yaml
+      $ref: ./configs/ondemand-flow-1/protocolCalls.yaml
 
 # name: world

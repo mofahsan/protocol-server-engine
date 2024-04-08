@@ -1,20 +1,35 @@
-const validateSchema = async (context) => {
-    logger = log.init();
+const Ajv = require("ajv");
+const ajv = new Ajv({
+  allErrors: true,
+  strict: "log",
+});
+const addFormats = require("ajv-formats");
+const { formatted_error } = require("../utils/utils");
+
+addFormats(ajv);
+require("ajv-errors")(ajv);
+const logger = require("../utils/logger").init()
+const {schemaNack} = require("../utils/responses")
+// logger = log.init();
+
+const validateSchema = async (payload,schema) => {
+    
     logger.info(
-      `Inside schema validation service for ${context?.req_body?.context?.action} api`
+      `Inside schema validation service for ${payload?.context?.action} api protocol server`
     );
     try {
-      const validate = ajv.compile(context.apiConfig.schema);
-      const valid = validate(context.req_body);
+      const validate = ajv.compile(schema);
+      const valid = validate(payload);
       if (!valid) {
         let error_list = validate.errors;
         logger.error(JSON.stringify(formatted_error(error_list)));
         logger.error("Schema validation : FAIL");
-        logger.error(context?.req_body?.context?.transaction_id)
-        return false;
+        logger.error(payload?.context?.transaction_id)
+        schemaNack.error.path= JSON.stringify(formatted_error(error_list))
+        return {status:false,message:schemaNack}
       } else {
         logger.info("Schema validation : SUCCESS");
-        return true;
+        return {status:true}
       }
     } catch (error) {
       logger.error(error);
