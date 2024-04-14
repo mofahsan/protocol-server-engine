@@ -1,19 +1,28 @@
 const cache = require("node-cache")
 
+const cacheInterface = require("./cacheinterface")
 
-const myCache = new cache( { stdTTL: 100, checkperiod: 120 } );
-
-function getCache(key){
-    if(key === undefined || key===""){
-        return myCache.keys()
+const defaultCacheOptions = { stdTTL: 100, checkperiod: 120 }
+class NodeCacheAdapter extends cacheInterface{
+    constructor(options){
+        super()
+        options = defaultCacheOptions
+        this.cache = new cache(options)
     }
-    
-    return myCache.get(key)
+
+    get(key){
+        if(key === undefined || key===""){
+            return this.cache.keys()
+        }
+        return this.cache.get(key)
+    }
+
+    set(uniqueIdentifier,data,ttl)
+    {
+        this.cache.set(uniqueIdentifier,data,ttl)
+    }
+
 }
 
-function setCache(uniqueIdentifier,data,ttl)
-{
-    myCache.set(uniqueIdentifier,data,ttl)
-}
 
-module.exports = {getCache,setCache}
+module.exports = {NodeCacheAdapter}

@@ -10,7 +10,8 @@ const {
   generateSession,
 } = require("../core/session");
 const { generateHeader, verifyHeader } = require("../core/auth_core");
-const { getCache } = require("../core/cache");
+const { NodeCacheAdapter } = require("../core/cache");
+const cache = new NodeCacheAdapter()
 const { parseBoolean } = require("../utils/utils");
 const mapping = require("../test");
 const IS_VERIFY_AUTH = parseBoolean(process.env.IS_VERIFY_AUTH);
@@ -50,17 +51,17 @@ const validateIncommingRequest = async (body, transaction_id, config, res) => {
           version: body.context.version,
           country: body?.context?.location?.country?.code,
           cityCode: body?.context?.location?.city?.code,
-          configName: "metro-flow-1",
+          configName: process.env.flow,
           transaction_id: transaction_id,
         });
         session = getSession(transaction_id);
       }
     } else {
-      const allSession = getCache();
+      const allSession = cache.get();
       console.log("allSessions", allSession);
 
       allSession.map((ses) => {
-        const sessionData = getCache(ses);
+        const sessionData = cache.get(ses);
         console.log("sessionDat", sessionData.transactionIds);
         if (sessionData.transactionIds.includes(body.context.transaction_id)) {
           console.log(" got session>>>>");

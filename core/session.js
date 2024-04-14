@@ -1,4 +1,5 @@
-const { setCache, getCache } = require("./cache");
+const { NodeCacheAdapter } = require("./cache");
+const cache = new NodeCacheAdapter()
 const fs = require("fs");
 const yaml = require("yaml");
 const path = require("path");
@@ -9,11 +10,12 @@ const localConfig = parseBoolean(process.env.localConfig);
 const SERVER_TYPE = process.env.SERVER_TYPE 
 
 const insertSession = (session) => {
-  setCache("jm_" + session.transaction_id, session, 86400);
+  
+  cache.set("jm_" + session.transaction_id, session, 86400)
 };
 
 const getSession = (transaction_id) => {
-  return getCache("jm_" + transaction_id);
+  return cache.get("jm_" + transaction_id);
 };
 
 function loadConfig() {
