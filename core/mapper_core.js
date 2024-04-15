@@ -220,7 +220,7 @@ const extractData = (obj, config, commData = {}) => {
     const data = {};
     item.value.map((val) => {
       if (!eval(val.value)) {
-        console.log(`key ${val.value} not found`);
+        // console.log(`key ${val.value} not found`);
         // data[val.key] = undefined;
       } else {
         data[val.key] = eval(val.value);

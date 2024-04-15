@@ -10,7 +10,7 @@ const {
   generateSession,
 } = require("../core/session");
 const { generateHeader, verifyHeader } = require("../core/auth_core");
-const {cache} = require("../core/cache")
+const { cache } = require("../core/cache");
 const { parseBoolean } = require("../utils/utils");
 const mapping = require("../test");
 const IS_VERIFY_AUTH = parseBoolean(process.env.IS_VERIFY_AUTH);
@@ -22,6 +22,10 @@ const PROTOCOL_SERVER = process.env.PROTOCOL_SERVER;
 const logger = require("../utils/logger").init();
 const { signNack, errorNack, ack } = require("../utils/responses");
 const dynamicReponse = require("../core/operations/main");
+const { configLoader } = require("../core/loadConfig");
+
+const ASYNC_MODE = "ASYNC";
+const SYNC_MODE = "SYNC";
 
 const becknToBusiness = (req, res) => {
   const body = req.body;
@@ -63,7 +67,7 @@ const validateIncommingRequest = async (body, transaction_id, config, res) => {
         const sessionData = cache.get(ses);
         console.log("sessionDat", sessionData.transactionIds);
         if (sessionData.transactionIds.includes(body.context.transaction_id)) {
-          console.log(" got session>>>>");
+          logger.info("<got session>");
           session = sessionData;
           sessionId = ses.substring(3);
         }
@@ -75,12 +79,14 @@ const validateIncommingRequest = async (body, transaction_id, config, res) => {
       }
     }
 
-    const schemaValidation = await validateSchema(body, session.schema[config]);
+    const schema = configLoader.getSchema(session.configName)[config];
+
+    const schemaValidation = await validateSchema(body, schema);
     if (!schemaValidation?.status) {
       return res.status(400).send(schemaValidation.message);
     }
 
-    console.log("Revieved request:", JSON.stringify(body));
+    logger.info("Recieved request: " + JSON.stringify(body?.context));
     res.send(ack);
     handleRequest(body, session, sessionId);
   } catch (err) {
@@ -103,7 +109,8 @@ const handleRequest = async (response, session, sessionId) => {
 
     // extarct protocol mapping
     // const protocol = mapping[session.configName][action];
-    const protocol = session.protocol[action];
+    // const protocol = session.protocol[action];
+    const protocol = configLoader.getMapping(session.configName)[action];
     // let becknPayload,updatedSession;
     // mapping/extraction
 
@@ -112,6 +119,7 @@ const handleRequest = async (response, session, sessionId) => {
         extractBusinessData(action, response, session, protocol);
 
       let urlEndpint = null;
+      let mode = null;
 
       const updatedCalls = updatedSession.calls.map((call) => {
         if (call?.message_id === response.context.message_id) {
@@ -121,6 +129,7 @@ const handleRequest = async (response, session, sessionId) => {
             businessPayload,
           ];
           urlEndpint = call.endpoint;
+          mode = call?.mode || ASYNC_MODE;
         }
 
         return call;
@@ -134,7 +143,8 @@ const handleRequest = async (response, session, sessionId) => {
         delete updatedSession.schema;
       }
 
-      if (!IS_SYNC) {
+      logger.info("mode::::::::: " + mode);
+      if (mode === ASYNC_MODE) {
         await axios.post(`${process.env.BACKEND_SERVER_URL}/${urlEndpint}`, {
           businessPayload,
           updatedSession,
@@ -176,7 +186,6 @@ const businessToBecknWrapper = async (req, res) => {
   try {
     const body = req.body;
     const { status, message, code } = await businessToBecknMethod(body);
-    console.log("message", message);
     if (message?.updatedSession?.schema) {
       delete message.updatedSession.schema;
     }
@@ -188,7 +197,7 @@ const businessToBecknWrapper = async (req, res) => {
 };
 
 const businessToBecknMethod = async (body) => {
-  console.log("inside create Payload ");
+  logger.info("inside businessToBecknMethod controller: ");
 
   try {
     //except target i can fetch rest from my payload
@@ -232,7 +241,8 @@ const businessToBecknMethod = async (body) => {
     ////////////// session validation ////////////////////
 
     // const protocol = mapping[session.configName][config];
-    const protocol = session.protocol[config];
+    // const protocol = session.protocol[config];
+    const protocol = configLoader.getMapping(session.configName)[config];
 
     ////////////// MAPPING/EXTRACTION ////////////////////////
 
@@ -287,12 +297,14 @@ const businessToBecknMethod = async (body) => {
 
     /// UPDTTED CALLS ///////
 
+    let mode = null;
     if (SERVER_TYPE === "BAP") {
       const updatedCalls = updatedSession.calls.map((call) => {
         const message_id = becknPayload.context.message_id;
         if (call.config === config) {
           // call.message_id = message_id;
           call.becknPayload = becknPayload;
+          mode = call?.mode || ASYNC_MODE;
         }
         if (call.config === `on_${config}`) {
           call.message_id = message_id;
@@ -307,7 +319,8 @@ const businessToBecknMethod = async (body) => {
 
     insertSession(updatedSession);
 
-    if (IS_SYNC) {
+    logger.info("mode::::::::: " + mode);
+    if (mode === SYNC_MODE) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           const newSession = getSession(transactionId);
@@ -354,7 +367,7 @@ const businessToBecknMethod = async (body) => {
       // res.send({ updatedSession, becknPayload, becknReponse: response.data });
     }
   } catch (e) {
-    // console.log(">>>>>", e);
+    console.log(">>>>>", e);
     return { status: "Error", message: errorNack, code: 500 };
     //   res.status(500).send(errorNack);
   }

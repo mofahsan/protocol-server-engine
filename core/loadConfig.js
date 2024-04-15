@@ -1,34 +1,68 @@
 const axios = require("axios");
-require("dotenv").config();
 
-branchName = process.env.branchName;
+const SERVER_TYPE = process.env.SERVER_TYPE;
 
-const url = `${process.env.config_url}`;
-// ${branchName}`;
+class ConfigLoader {
+  constructor() {
+    this.config = null;
+  }
 
-async function loadConfigFromUrl() {
-  return new Promise(async (resolve, reject) => {
+  async init() {
     try {
-      const response = await axios.get(url);
-      //   const x = await response.text()
-      const formattedResponse = response.data;
-      //   return
-      //   let splitedText = atob(formattedResponse?.content);
-      build_spec = JSON.parse(getStringAfterEquals(formattedResponse));
-      resolve(build_spec);
-    } catch (err) {
-      console.log(err);
-    }
-  });
-}
+      const url = process.env.config_url;
 
-function getStringAfterEquals(inputString) {
-  const index = inputString.indexOf("=");
-  if (index !== -1) {
-    return inputString.slice(index + 1).trim();
-  } else {
-    return "";
+      if (!url) {
+        throw new Error("Config url not found");
+      }
+
+      const response = await axios.get(url);
+
+      this.config = response.data;
+
+      return response.data;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  getConfig() {
+    return this.config;
+  }
+
+  getSchema(configName) {
+    if (!SERVER_TYPE) {
+      throw new Error("SERVER_TYPE not found");
+    }
+
+    let schema = null;
+
+    this.config[SERVER_TYPE].flows?.forEach((flow) => {
+      if (flow.id === configName) {
+        schema = flow.schema;
+        return;
+      }
+    });
+
+    return schema;
+  }
+
+  getMapping(configName) {
+    if (!SERVER_TYPE) {
+      throw new Error("SERVER_TYPE not found");
+    }
+    let mapping = null;
+
+    this.config[SERVER_TYPE].flows?.forEach((flow) => {
+      if (flow.id === configName) {
+        mapping = flow.protocol;
+        return;
+      }
+    });
+
+    return mapping;
   }
 }
 
-module.exports = loadConfigFromUrl;
+const configLoader = new ConfigLoader();
+
+module.exports = { configLoader };

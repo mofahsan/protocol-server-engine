@@ -1,0 +1,208 @@
+[2024-04-15T04:43:28.207Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T04:43:28.526Z] [[31merror[39m]: {"errors":[{"message":"must NOT have additional properties (description)","details":"/error"}],"status":"fail"}
+[2024-04-15T04:43:28.526Z] [[31merror[39m]: Schema validation : FAIL
+[2024-04-15T04:43:28.526Z] [[31merror[39m]: 997ebd79-a616-45fa-a568-4b72c1897c9d
+[2024-04-15T04:43:29.516Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T04:43:29.764Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T04:45:26.862Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T04:45:27.162Z] [[31merror[39m]: {"errors":[{"message":"must NOT have additional properties (description)","details":"/error"}],"status":"fail"}
+[2024-04-15T04:45:27.162Z] [[31merror[39m]: Schema validation : FAIL
+[2024-04-15T04:45:27.163Z] [[31merror[39m]: 8525c332-0d72-4ffc-8cc4-e08e63ee3b00
+[2024-04-15T04:45:28.233Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T04:45:28.489Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T04:45:47.685Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T04:45:47.956Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T04:47:13.215Z] [[32minfo[39m]: Inside schema validation service for on_select api protocol server
+[2024-04-15T04:47:13.657Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T04:47:29.826Z] [[32minfo[39m]: Inside schema validation service for on_init api protocol server
+[2024-04-15T04:47:30.251Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T04:47:46.406Z] [[32minfo[39m]: Inside schema validation service for on_confirm api protocol server
+[2024-04-15T04:47:46.867Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T04:48:05.193Z] [[32minfo[39m]: Inside schema validation service for on_status api protocol server
+[2024-04-15T04:48:05.631Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T04:59:33.804Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T04:59:37.370Z] [[32minfo[39m]: mode:::::::::
+[2024-04-15T04:59:38.376Z] [[32minfo[39m]: <got session>
+[2024-04-15T04:59:38.377Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T04:59:38.668Z] [[31merror[39m]: {"errors":[{"message":"must NOT have additional properties (description)","details":"/error"}],"status":"fail"}
+[2024-04-15T04:59:38.669Z] [[31merror[39m]: Schema validation : FAIL
+[2024-04-15T04:59:38.669Z] [[31merror[39m]: 1adf53fb-35ba-4c1c-a73c-d8d5559260ac
+[2024-04-15T04:59:39.633Z] [[32minfo[39m]: <got session>
+[2024-04-15T04:59:39.633Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T04:59:39.903Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T04:59:41.077Z] [[32minfo[39m]: mode:::::::::
+[2024-04-15T05:01:03.356Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:01:06.415Z] [[32minfo[39m]: mode:::::::::ASYNC
+[2024-04-15T05:01:07.463Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:01:07.464Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:01:07.756Z] [[31merror[39m]: {"errors":[{"message":"must NOT have additional properties (description)","details":"/error"}],"status":"fail"}
+[2024-04-15T05:01:07.757Z] [[31merror[39m]: Schema validation : FAIL
+[2024-04-15T05:01:07.757Z] [[31merror[39m]: 7963521f-1d1b-46ea-8b84-86d83dafec24
+[2024-04-15T05:01:08.727Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:01:08.727Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:01:08.951Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:01:09.938Z] [[32minfo[39m]: mode:::::::::
+[2024-04-15T05:01:19.775Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:01:22.161Z] [[32minfo[39m]: mode:::::::::SYNC
+[2024-04-15T05:01:23.228Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:01:23.229Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:01:23.531Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:01:24.525Z] [[32minfo[39m]: mode:::::::::
+[2024-04-15T05:02:16.597Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:02:19.780Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:02:21.005Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:02:21.006Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:02:21.367Z] [[31merror[39m]: {"errors":[{"message":"must NOT have additional properties (description)","details":"/error"}],"status":"fail"}
+[2024-04-15T05:02:21.367Z] [[31merror[39m]: Schema validation : FAIL
+[2024-04-15T05:02:21.367Z] [[31merror[39m]: 51d7fb63-b99e-48cf-974a-73505b49cda7
+[2024-04-15T05:02:22.559Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:02:22.559Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:02:22.813Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:02:23.786Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:03:07.007Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:03:10.387Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:03:11.376Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:03:11.377Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:03:11.642Z] [[31merror[39m]: {"errors":[{"message":"must NOT have additional properties (description)","details":"/error"}],"status":"fail"}
+[2024-04-15T05:03:11.642Z] [[31merror[39m]: Schema validation : FAIL
+[2024-04-15T05:03:11.642Z] [[31merror[39m]: 089d779b-283c-4258-ae50-cb030604b14d
+[2024-04-15T05:03:12.622Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:03:12.623Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:03:12.855Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:03:12.855Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_search","version":"2.0.0","bpp_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bap_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"089d779b-283c-4258-ae50-cb030604b14d","message_id":"3c215b94-19dc-41c6-8c27-597a85a965d5","timestamp":"2024-04-15T05:03:09.631Z","ttl":"PT30S"}
+[2024-04-15T05:03:13.820Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:03:28.903Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:03:31.211Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T05:03:32.189Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:03:32.189Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:03:32.467Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:03:32.468Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_search","version":"2.0.0","bpp_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bap_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"671582e3-fc6f-46a5-a6ce-d07f457e671e","message_id":"38b832b3-679e-49cd-a906-090193921c26","timestamp":"2024-04-15T05:03:30.302Z","ttl":"PT30S"}
+[2024-04-15T05:03:33.443Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T05:03:47.918Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:03:50.417Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:03:51.457Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:03:51.458Z] [[32minfo[39m]: Inside schema validation service for on_select api protocol server
+[2024-04-15T05:03:51.941Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:03:51.942Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_select","version":"2.0.0","bap_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"671582e3-fc6f-46a5-a6ce-d07f457e671e","message_id":"a0c71d71-aa9a-4c70-821e-1c259193adbf","timestamp":"2024-04-15T05:03:49.366Z","ttl":"PT30S"}
+[2024-04-15T05:03:52.953Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:32:56.467Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:34:02.349Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:34:29.691Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:35:58.734Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:36:55.943Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:37:47.747Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:37:48.746Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:37:48.925Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:37:48.925Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:37:49.285Z] [[31merror[39m]: {"errors":[{"message":"must NOT have additional properties (description)","details":"/error"}],"status":"fail"}
+[2024-04-15T05:37:49.286Z] [[31merror[39m]: Schema validation : FAIL
+[2024-04-15T05:37:49.286Z] [[31merror[39m]: 1d6743fc-163e-42ea-b5f5-0ff4c8dda9fc
+[2024-04-15T05:37:49.291Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:37:49.291Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:37:49.293Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:37:49.294Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_search","version":"2.0.0","bpp_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bap_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"1d6743fc-163e-42ea-b5f5-0ff4c8dda9fc","message_id":"add9158e-e209-4e2f-84df-6d8fcd6fea76","timestamp":"2024-04-15T05:37:48.960Z","ttl":"PT30S"}
+[2024-04-15T05:37:49.296Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:38:29.227Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:38:29.344Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:38:29.419Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:38:29.420Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:38:29.763Z] [[31merror[39m]: {"errors":[{"message":"must NOT have additional properties (description)","details":"/error"}],"status":"fail"}
+[2024-04-15T05:38:29.763Z] [[31merror[39m]: Schema validation : FAIL
+[2024-04-15T05:38:29.763Z] [[31merror[39m]: 204f98ce-e180-45c8-a1dd-3c2f04d22da7
+[2024-04-15T05:38:29.784Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:38:29.785Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:38:29.785Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:38:29.785Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_search","version":"2.0.0","bpp_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bap_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"204f98ce-e180-45c8-a1dd-3c2f04d22da7","message_id":"a6d51764-320b-4950-9ae6-6c859780eb75","timestamp":"2024-04-15T05:38:29.552Z","ttl":"PT30S"}
+[2024-04-15T05:38:29.787Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:38:42.245Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:38:42.666Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T05:38:43.094Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:38:43.095Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T05:38:43.096Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:38:43.097Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_search","version":"2.0.0","bpp_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bap_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"ec01d002-2da6-42de-a1a0-53c3c2e925eb","message_id":"b1477538-b1dd-4151-ba87-210e02be77e8","timestamp":"2024-04-15T05:38:42.746Z","ttl":"PT30S"}
+[2024-04-15T05:38:43.105Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T05:38:52.758Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:38:52.983Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:38:53.330Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:38:53.330Z] [[32minfo[39m]: Inside schema validation service for on_select api protocol server
+[2024-04-15T05:38:53.868Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:38:53.869Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_select","version":"2.0.0","bap_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"ec01d002-2da6-42de-a1a0-53c3c2e925eb","message_id":"4e20025d-0698-4c31-ad50-662e7facc7ba","timestamp":"2024-04-15T05:38:53.060Z","ttl":"PT30S"}
+[2024-04-15T05:38:53.871Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:39:02.651Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:39:02.875Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T05:39:03.300Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:39:03.301Z] [[32minfo[39m]: Inside schema validation service for on_init api protocol server
+[2024-04-15T05:39:03.821Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:39:03.821Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_init","version":"2.0.0","bap_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"ec01d002-2da6-42de-a1a0-53c3c2e925eb","message_id":"536fc571-3ecc-4116-be7f-745f5557a5f6","timestamp":"2024-04-15T05:39:02.949Z","ttl":"PT30S"}
+[2024-04-15T05:39:03.825Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T05:39:15.587Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:39:15.850Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:39:16.192Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:39:16.193Z] [[32minfo[39m]: Inside schema validation service for on_confirm api protocol server
+[2024-04-15T05:39:16.723Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:39:16.723Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_confirm","version":"2.0.0","bap_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"ec01d002-2da6-42de-a1a0-53c3c2e925eb","message_id":"901edd11-3770-4d8c-85ef-534184de76c6","timestamp":"2024-04-15T05:39:15.915Z","ttl":"PT30S"}
+[2024-04-15T05:39:16.729Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T05:39:22.891Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T05:39:23.133Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T05:39:23.453Z] [[32minfo[39m]: <got session>
+[2024-04-15T05:39:23.454Z] [[32minfo[39m]: Inside schema validation service for on_status api protocol server
+[2024-04-15T05:39:23.907Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T05:39:23.908Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_status","version":"2.0.0","bap_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"ec01d002-2da6-42de-a1a0-53c3c2e925eb","message_id":"271dd368-13bc-4043-ab46-3936795f9f6c","timestamp":"2024-04-15T05:39:23.207Z","ttl":"PT30S"}
+[2024-04-15T05:39:23.915Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T09:42:05.911Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T09:42:06.079Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T09:49:43.617Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T09:49:43.735Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T09:50:54.095Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T09:50:54.224Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T09:54:43.303Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T09:54:43.428Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T09:57:03.518Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T09:57:03.632Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T10:27:14.448Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T10:27:14.603Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T10:27:14.679Z] [[32minfo[39m]: <got session>
+[2024-04-15T10:27:14.680Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T10:27:15.043Z] [[31merror[39m]: {"errors":[{"message":"must NOT have additional properties (description)","details":"/error"}],"status":"fail"}
+[2024-04-15T10:27:15.046Z] [[31merror[39m]: Schema validation : FAIL
+[2024-04-15T10:27:15.046Z] [[31merror[39m]: 25d8ea9e-e62b-4c59-a54d-3f3f9d660968
+[2024-04-15T10:27:15.089Z] [[32minfo[39m]: <got session>
+[2024-04-15T10:27:15.116Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T10:27:15.169Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T10:27:15.180Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_search","version":"2.0.0","bpp_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bap_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"25d8ea9e-e62b-4c59-a54d-3f3f9d660968","message_id":"40959b1f-bcbe-4207-bd46-8ccf4bb38aa1","timestamp":"2024-04-15T10:27:14.724Z","ttl":"PT30S"}
+[2024-04-15T10:27:15.229Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T10:27:25.643Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T10:27:25.932Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T10:27:26.269Z] [[32minfo[39m]: <got session>
+[2024-04-15T10:27:26.270Z] [[32minfo[39m]: Inside schema validation service for on_search api protocol server
+[2024-04-15T10:27:26.271Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T10:27:26.273Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_search","version":"2.0.0","bpp_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bap_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"99de8553-61d7-42a5-8ecc-ea8c5a9e4ff1","message_id":"f6e59ae5-84cb-4454-9a49-a0c31e962d0b","timestamp":"2024-04-15T10:27:25.940Z","ttl":"PT30S"}
+[2024-04-15T10:27:26.282Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T10:27:35.411Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T10:27:35.984Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T10:27:36.214Z] [[32minfo[39m]: <got session>
+[2024-04-15T10:27:36.214Z] [[32minfo[39m]: Inside schema validation service for on_select api protocol server
+[2024-04-15T10:27:36.771Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T10:27:36.771Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_select","version":"2.0.0","bap_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"99de8553-61d7-42a5-8ecc-ea8c5a9e4ff1","message_id":"08b4c612-9925-49a0-afca-3275b005b75c","timestamp":"2024-04-15T10:27:35.877Z","ttl":"PT30S"}
+[2024-04-15T10:27:36.773Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T10:27:44.598Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T10:27:45.035Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T10:27:45.414Z] [[32minfo[39m]: <got session>
+[2024-04-15T10:27:45.414Z] [[32minfo[39m]: Inside schema validation service for on_init api protocol server
+[2024-04-15T10:27:45.914Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T10:27:45.914Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_init","version":"2.0.0","bap_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"99de8553-61d7-42a5-8ecc-ea8c5a9e4ff1","message_id":"ac5a4f9b-3a1a-441b-ad02-603f31ec0c8d","timestamp":"2024-04-15T10:27:45.042Z","ttl":"PT30S"}
+[2024-04-15T10:27:45.917Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T10:27:57.394Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T10:27:57.905Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T10:27:58.181Z] [[32minfo[39m]: <got session>
+[2024-04-15T10:27:58.182Z] [[32minfo[39m]: Inside schema validation service for on_confirm api protocol server
+[2024-04-15T10:27:58.704Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T10:27:58.704Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_confirm","version":"2.0.0","bap_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"99de8553-61d7-42a5-8ecc-ea8c5a9e4ff1","message_id":"0ee72208-5fcf-4dfe-ab58-7adda3e5c62a","timestamp":"2024-04-15T10:27:57.837Z","ttl":"PT30S"}
+[2024-04-15T10:27:58.708Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-15T10:28:04.738Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-15T10:28:04.998Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-15T10:28:05.381Z] [[32minfo[39m]: <got session>
+[2024-04-15T10:28:05.382Z] [[32minfo[39m]: Inside schema validation service for on_status api protocol server
+[2024-04-15T10:28:05.905Z] [[32minfo[39m]: Schema validation : SUCCESS
+[2024-04-15T10:28:05.906Z] [[32minfo[39m]: Recieved request: {"location":{"country":{"code":"IND"},"city":{"code":"std:011"}},"domain":"ONDC:TRV11","action":"on_status","version":"2.0.0","bap_id":"mobility-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/seller/","transaction_id":"99de8553-61d7-42a5-8ecc-ea8c5a9e4ff1","message_id":"08b29237-b5f3-499a-a14a-cd54a8d9f12e","timestamp":"2024-04-15T10:28:05.004Z","ttl":"PT30S"}
+[2024-04-15T10:28:05.909Z] [[32minfo[39m]: mode::::::::: SYNC

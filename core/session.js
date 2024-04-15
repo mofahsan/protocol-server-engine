@@ -1,16 +1,15 @@
-const {cache} = require("./cache")
+const { cache } = require("./cache");
 const fs = require("fs");
 const yaml = require("yaml");
 const path = require("path");
 const $RefParser = require("@apidevtools/json-schema-ref-parser");
 const { parseBoolean } = require("../utils/utils");
-const loadConfigFromUrl = require("./loadConfig");
+const { configLoader } = require("./loadConfig");
 const localConfig = parseBoolean(process.env.localConfig);
-const SERVER_TYPE = process.env.SERVER_TYPE 
+const SERVER_TYPE = process.env.SERVER_TYPE;
 
 const insertSession = (session) => {
-  
-  cache.set("jm_" + session.transaction_id, session, 86400)
+  cache.set("jm_" + session.transaction_id, session, 86400);
 };
 
 const getSession = (transaction_id) => {
@@ -31,7 +30,7 @@ function loadConfig() {
 
         resolve(schema[SERVER_TYPE]);
       } else {
-        const build_spec = await loadConfigFromUrl();
+        const build_spec = configLoader.getConfig();
 
         resolve(build_spec[SERVER_TYPE]);
         // resolve()
@@ -120,10 +119,10 @@ async function generateSession(session_body) {
       ...filteredSessiondata,
       currentTransactionId: transaction_id,
       transactionIds: [transaction_id],
-      protocol: filteredProtocol,
+      // protocol: filteredProtocol,
       calls: filteredCalls,
       additioalFlows: filteredAdditionalFlows,
-      schema: filteredSchema,
+      // schema: filteredSchema,
       api: filteredApi,
     };
 
