@@ -1,5 +1,4 @@
-const { NodeCacheAdapter } = require("./cache");
-const cache = new NodeCacheAdapter()
+const {cache} = require("./cache")
 const fs = require("fs");
 const yaml = require("yaml");
 const path = require("path");

@@ -1,4 +1,4 @@
-const cache = require("node-cache")
+const nodecache = require("node-cache")
 
 const cacheInterface = require("./cacheinterface")
 
@@ -6,8 +6,7 @@ const defaultCacheOptions = { stdTTL: 100, checkperiod: 120 }
 class NodeCacheAdapter extends cacheInterface{
     constructor(options){
         super()
-        options = defaultCacheOptions
-        this.cache = new cache(options)
+        this.cache = new nodecache(options)
     }
 
     get(key){
@@ -25,4 +24,6 @@ class NodeCacheAdapter extends cacheInterface{
 }
 
 
-module.exports = {NodeCacheAdapter}
+const cache = new NodeCacheAdapter(defaultCacheOptions)
+
+module.exports = {cache}

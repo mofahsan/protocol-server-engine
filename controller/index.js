@@ -10,8 +10,7 @@ const {
   generateSession,
 } = require("../core/session");
 const { generateHeader, verifyHeader } = require("../core/auth_core");
-const { NodeCacheAdapter } = require("../core/cache");
-const cache = new NodeCacheAdapter()
+const {cache} = require("../core/cache")
 const { parseBoolean } = require("../utils/utils");
 const mapping = require("../test");
 const IS_VERIFY_AUTH = parseBoolean(process.env.IS_VERIFY_AUTH);
