@@ -23,6 +23,10 @@ const logger = require("../utils/logger").init();
 const { signNack, errorNack, ack } = require("../utils/responses");
 const dynamicReponse = require("../core/operations/main");
 const { configLoader } = require("../core/loadConfig");
+const {
+  checkAttributes,
+  comapreObjects,
+} = require("../core/attributeValidation");
 
 const ASYNC_MODE = "ASYNC";
 const SYNC_MODE = "SYNC";
@@ -79,12 +83,16 @@ const validateIncommingRequest = async (body, transaction_id, config, res) => {
       }
     }
 
-    const schema = configLoader.getSchema(session.configName)[config];
+    // const schema = configLoader.getSchema(session.configName)[config];
 
-    const schemaValidation = await validateSchema(body, schema);
-    if (!schemaValidation?.status) {
-      return res.status(400).send(schemaValidation.message);
-    }
+    // const schemaValidation = await validateSchema(body, schema);
+    // if (!schemaValidation?.status) {
+    //   return res.status(400).send(schemaValidation.message);
+    // }
+
+    const attributeConfig = configLoader.getAttributeConfig(session.configName);
+
+    comapreObjects(body, attributeConfig[config], config);
 
     logger.info("Recieved request: " + JSON.stringify(body?.context));
     res.send(ack);
@@ -107,14 +115,19 @@ const handleRequest = async (response, session, sessionId) => {
       return console.log("Message ID not defined");
     }
 
-    // extarct protocol mapping
-    // const protocol = mapping[session.configName][action];
-    // const protocol = session.protocol[action];
-    const protocol = configLoader.getMapping(session.configName)[action];
-    // let becknPayload,updatedSession;
-    // mapping/extraction
-
     if (is_buyer) {
+      let config = null;
+
+      session.calls.map((call) => {
+        if (call?.message_id === response.context.message_id) {
+          config = call.config;
+        }
+      });
+
+      console.log("config >>>>>", config);
+
+      const protocol = configLoader.getMapping(session.configName)[config];
+
       const { result: businessPayload, session: updatedSession } =
         extractBusinessData(action, response, session, protocol);
 
@@ -143,7 +156,7 @@ const handleRequest = async (response, session, sessionId) => {
         delete updatedSession.schema;
       }
 
-      logger.info("mode::::::::: " + mode);
+      logger.info("mode>>>>>>>>> " + mode);
       if (mode === ASYNC_MODE) {
         await axios.post(`${process.env.BACKEND_SERVER_URL}/${urlEndpint}`, {
           businessPayload,
@@ -154,6 +167,8 @@ const handleRequest = async (response, session, sessionId) => {
         });
       }
     } else {
+      const protocol = configLoader.getMapping(session.configName)[action];
+
       let { callback, serviceUrl, sync } = dynamicReponse(
         response,
         session.api[action]
