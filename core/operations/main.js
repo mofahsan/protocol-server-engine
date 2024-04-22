@@ -18,7 +18,7 @@ const dynamicReponse = (req_body,callback) =>{
           } 
         }
       }
-      return {callback:callback['default'].callback,serviceUrl:callback[payloads].service_url,sync:callback[payloads].sync}
+      return {callback:callback['default'].callback,serviceUrl:callback['default'].service_url,sync:callback['default'].sync}
   }
 
   module.exports = dynamicReponse
