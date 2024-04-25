@@ -1,3 +1,6 @@
+const fs = require("fs")
+
+
 const formatted_error = (errors) => {
     error_list = [];
     let status = "";
@@ -38,4 +41,15 @@ const formatted_error = (errors) => {
 }
 
 
-module.exports= {formatted_error,parseBoolean}
+const jsonout = (json,filename)=>{
+  console.log("json saved to the file")
+    const jsonString = JSON.stringify(json, null, 2)
+    fs.writeFile(`./compare_temp/${filename}.json`,jsonString,(err,out)=>{
+        if(err)console.log(err)
+        else{
+    console.log(out)}
+    })
+}
+
+
+module.exports= {formatted_error,parseBoolean,jsonout}

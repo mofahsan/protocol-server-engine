@@ -33,7 +33,6 @@ function loadConfig() {
         const build_spec = configLoader.getConfig();
 
         resolve(build_spec[SERVER_TYPE]);
-        // resolve()
       }
     } catch (e) {
       throw new Error(e);

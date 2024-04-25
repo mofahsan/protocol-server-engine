@@ -11,7 +11,7 @@ const {
 } = require("../core/session");
 const { generateHeader, verifyHeader } = require("../core/auth_core");
 const { cache } = require("../core/cache");
-const { parseBoolean } = require("../utils/utils");
+const { parseBoolean,jsonout } = require("../utils/utils");
 const mapping = require("../test");
 const IS_VERIFY_AUTH = parseBoolean(process.env.IS_VERIFY_AUTH);
 const IS_SYNC = parseBoolean(process.env.BUSINESS_SERVER_IS_SYNC);
@@ -21,7 +21,7 @@ const SERVER_TYPE = process.env.SERVER_TYPE;
 const PROTOCOL_SERVER = process.env.PROTOCOL_SERVER;
 const logger = require("../utils/logger").init();
 const { signNack, errorNack, ack } = require("../utils/responses");
-const dynamicReponse = require("../core/operations/main");
+const {dynamicReponse,dynamicFlow} = require("../core/operations/main");
 const { configLoader } = require("../core/loadConfig");
 
 const ASYNC_MODE = "ASYNC";
@@ -49,13 +49,16 @@ const validateIncommingRequest = async (body, transaction_id, config, res) => {
     if (SERVER_TYPE === "BPP") {
       session = getSession(transaction_id);
 
+     const configObject=  configLoader.getConfig()
+      configName = dynamicFlow(body,configObject[SERVER_TYPE]["flow_selector"][config])
+
       if (!session) {
         await generateSession({
           version: body.context.version,
           country: body?.context?.location?.country?.code,
           cityCode: body?.context?.location?.city?.code,
-          configName: process.env.flow,
-          transaction_id: transaction_id,
+          configName: configName || process.env.flow,
+          transaction_id: transaction_id
         });
         session = getSession(transaction_id);
       }
@@ -235,8 +238,10 @@ const businessToBecknMethod = async (body) => {
         //   return res.status(400).send({ error: "session not found" }); ------->
       }
     }
-
-    session = { ...session, ...data };
+    
+    if (SERVER_TYPE === "BAP") {
+      session = { ...session, ...data }; 
+    }
 
     ////////////// session validation ////////////////////
 
@@ -253,7 +258,7 @@ const businessToBecknMethod = async (body) => {
       becknPayload.context.bap_uri = `${process.env.SUBSCRIBER_URL}/ondc`;
     }
 
-    let url;
+    let url; 
 
     const GATEWAY_URL = process.env.GATEWAY_URL;
 
@@ -290,7 +295,7 @@ const businessToBecknMethod = async (body) => {
     const header = { headers: { Authorization: signedHeader } };
 
     //////////////////// SEND TO NETWORK /////////////////////////
-
+    
     const response = await axios.post(`${url}${type}`, becknPayload, header);
 
     //////////////////// SEND TO NETWORK /////////////////////////
