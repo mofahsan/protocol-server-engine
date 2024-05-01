@@ -120,12 +120,18 @@ const handleRequest = async (response, session, sessionId) => {
 
     if (is_buyer) {
       let config = null;
+      let isUnsolicited = true;
 
       session.calls.map((call) => {
         if (call?.message_id === response.context.message_id) {
           config = call.config;
+          isUnsolicited = false;
         }
       });
+
+      if (isUnsolicited) {
+        config = action;
+      }
 
       console.log("config >>>>>", config);
 
@@ -135,9 +141,14 @@ const handleRequest = async (response, session, sessionId) => {
         extractBusinessData(action, response, session, protocol);
 
       let urlEndpint = null;
-      let mode = null;
+      let mode = ASYNC_MODE;
 
       const updatedCalls = updatedSession.calls.map((call) => {
+        if (isUnsolicited && call.config === action) {
+          call.unsolicited = [...(call.unsolicited || []), response];
+          urlEndpint = call.unsolicitedEndpoint;
+        }
+
         if (call?.message_id === response.context.message_id) {
           call.becknPayload = [...(call.becknPayload || []), response];
           call.businessPayload = [
@@ -232,7 +243,6 @@ const businessToBecknMethod = async (body) => {
     let session = body.session;
 
     ////////////// session validation ////////////////////
-
     if (session && session.createSession && session.data) {
       await generateSession({
         country: session.data.country,
