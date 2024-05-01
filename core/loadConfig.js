@@ -79,6 +79,10 @@ class ConfigLoader {
 
     return mapping;
   }
+
+  getAttributeConfig(configName) {
+    return this.config.attributes[configName];
+  }
 }
 
 const configLoader = new ConfigLoader();

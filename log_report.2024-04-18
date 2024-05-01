@@ -1,0 +1,91 @@
+[2024-04-18T05:44:38.801Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:44:39.063Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-18T05:44:39.216Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:44:39.216Z] [[32minfo[39m]: Recieved request: {"bap_id":"fis-buyer-staging.ondc.org","location":{"country":{"code":"IND"},"city":{"code":"*"}},"transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"ec8fcd15-ab66-4936-a364-a6c727504e37","timestamp":"2024-04-18T05:44:39.218Z","domain":"ONDC:FIS12","version":"2.0.0","ttl":"PT30M","action":"on_search","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"pramaan.ondc.org/beta/staging/mock/seller","bpp_uri":"https://pramaan.ondc.org/beta/preprod/mock/seller"}
+[2024-04-18T05:44:39.222Z] [[32minfo[39m]: mode>>>>>>>>> ASYNC
+[2024-04-18T05:44:39.627Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:44:39.631Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_search","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"ec8fcd15-ab66-4936-a364-a6c727504e37","ttl":"PT30M","timestamp":"2024-04-18T05:44:39.323Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:44:39.637Z] [[32minfo[39m]: mode>>>>>>>>> ASYNC
+[2024-04-18T05:44:40.090Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:44:40.091Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_search","ttl":"PT5M","timestamp":"2024-04-18T05:44:39.601Z","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"ec8fcd15-ab66-4936-a364-a6c727504e37","bpp_id":"ondctest.refo.dev","bpp_uri":"https://ondctest.refo.dev/app/ondc/seller"}
+[2024-04-18T05:44:40.095Z] [[32minfo[39m]: mode>>>>>>>>> ASYNC
+[2024-04-18T05:44:40.596Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:44:40.596Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"action":"on_search","version":"2.0.0","timestamp":"2024-04-18T05:44:40.301Z","ttl":"PT10M","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"ondcuatkbl.ignosis.ai","bpp_uri":"https://ondcuatkbl.ignosis.ai/lender-bridge/ondc/kbl-uat","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"ec8fcd15-ab66-4936-a364-a6c727504e37"}
+[2024-04-18T05:44:40.602Z] [[32minfo[39m]: mode>>>>>>>>> ASYNC
+[2024-04-18T05:44:40.904Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:44:40.904Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"action":"on_search","version":"2.0.0","timestamp":"2024-04-18T05:44:40.645Z","ttl":"PT10M","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"ondcuatpahal.ignosis.ai","bpp_uri":"https://ondcuatpahal.ignosis.ai/lender-bridge/ondc/pahal-uat","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"ec8fcd15-ab66-4936-a364-a6c727504e37"}
+[2024-04-18T05:44:40.910Z] [[32minfo[39m]: mode>>>>>>>>> ASYNC
+[2024-04-18T05:44:41.421Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:44:41.421Z] [[32minfo[39m]: Recieved request: {"action":"on_search","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"message_id":"ec8fcd15-ab66-4936-a364-a6c727504e37","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","timestamp":"2024-04-18T05:44:40.238Z","version":"2.0.0","ttl":"PT10M","bpp_id":"api.abcscuat.com","bpp_uri":"https://api.abcscuat.com/abfl-ondc-preprod"}
+[2024-04-18T05:44:41.429Z] [[32minfo[39m]: mode>>>>>>>>> ASYNC
+[2024-04-18T05:45:01.055Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:45:01.498Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:45:01.908Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:45:01.908Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_select","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"1e9fe8f7-416e-4168-9983-b0d8fffeeb03","ttl":"PT30M","timestamp":"2024-04-18T05:45:01.553Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:45:01.925Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:45:44.321Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:45:44.549Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-18T05:45:44.912Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:45:44.913Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_select","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"11893e35-4c2c-45f7-8e3e-f15f0e89df20","ttl":"PT30M","timestamp":"2024-04-18T05:45:44.605Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:45:44.923Z] [[32minfo[39m]: mode>>>>>>>>> ASYNC
+[2024-04-18T05:45:56.042Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:45:56.278Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:45:56.589Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:45:56.590Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_select","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"20712e8a-017d-4ee4-b72b-347d8f44cbc5","ttl":"PT30M","timestamp":"2024-04-18T05:45:56.331Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:45:56.598Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:46:13.136Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:46:13.377Z] [[32minfo[39m]: mode::::::::: ASYNC
+[2024-04-18T05:46:13.787Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:46:13.788Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_init","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"192d547c-14ee-4d78-9631-3304777d4157","ttl":"PT30M","timestamp":"2024-04-18T05:46:13.430Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:46:13.799Z] [[32minfo[39m]: mode>>>>>>>>> ASYNC
+[2024-04-18T05:46:26.584Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:46:26.839Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:46:27.154Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:46:27.154Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_init","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"a9603244-0335-4a80-9469-939b2e0a3935","ttl":"PT30M","timestamp":"2024-04-18T05:46:26.892Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:46:27.166Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:46:38.940Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:46:39.244Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:46:39.586Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:46:39.586Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_init","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"2bd12739-b7bf-4a04-8507-d01dc079d82c","ttl":"PT30M","timestamp":"2024-04-18T05:46:39.297Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:46:39.601Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:47:01.160Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:47:01.488Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:47:01.809Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:47:01.809Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_confirm","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"3b406b36-5923-4393-ae26-c4d5fe3158fd","ttl":"PT30M","timestamp":"2024-04-18T05:47:01.540Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:47:01.827Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:47:02.007Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:47:02.007Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_update","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"14350afd-04eb-4b6b-b6a3-8afdf7dc5ac2","ttl":"PT30M","timestamp":"2024-04-18T05:47:01.542Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:47:02.042Z] [[31merror[39m]: {}
+[2024-04-18T05:47:11.703Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:47:12.116Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:47:12.451Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:47:12.451Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_update","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"1615f1f8-f779-4189-8ea8-0289a7d3717e","ttl":"PT30M","timestamp":"2024-04-18T05:47:12.171Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:47:12.469Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:47:24.250Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:47:24.513Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:47:24.825Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:47:24.825Z] [[32minfo[39m]: Recieved request: {"transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","action":"on_status","domain":"ONDC:FIS12","timestamp":"2024-04-18T05:47:24.566Z","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/","message_id":"08cc0e83-d4d1-45f7-8901-d9771a92c3d8","ttl":"PT10M","version":"2.0.0","location":{"country":{"code":"IND"}}}
+[2024-04-18T05:47:24.856Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:48:40.614Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:48:40.937Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:48:41.257Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:48:41.262Z] [[32minfo[39m]: Recieved request: {"transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","action":"on_status","domain":"ONDC:FIS12","timestamp":"2024-04-18T05:48:40.986Z","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/","message_id":"5136323b-9a7c-453d-bf99-13df93162ce6","ttl":"PT10M","version":"2.0.0","location":{"country":{"code":"IND"}}}
+[2024-04-18T05:48:41.274Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:48:50.092Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:48:50.343Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:48:50.668Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:48:50.668Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_update","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"46fc90dd-e787-43b5-be9d-c2bec72e8591","ttl":"PT30M","timestamp":"2024-04-18T05:48:50.399Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:48:50.686Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:48:55.559Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:48:55.817Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:48:56.130Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:48:56.130Z] [[32minfo[39m]: Recieved request: {"transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","action":"on_status","domain":"ONDC:FIS12","timestamp":"2024-04-18T05:48:55.868Z","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","bpp_id":"mobility-staging.ondc.org","bpp_uri":"https://mobility-staging.ondc.org/","message_id":"c01ce3bf-c11c-4da0-8caf-62bd40f96cfb","ttl":"PT10M","version":"2.0.0","location":{"country":{"code":"IND"}}}
+[2024-04-18T05:48:56.145Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:49:06.733Z] [[32minfo[39m]: inside businessToBecknMethod controller: 
+[2024-04-18T05:49:07.009Z] [[32minfo[39m]: mode::::::::: SYNC
+[2024-04-18T05:49:07.341Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:49:07.341Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_confirm","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"51f9c969-924e-40a9-8979-93d5c5a65243","ttl":"PT30M","timestamp":"2024-04-18T05:49:07.064Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:49:07.358Z] [[32minfo[39m]: mode>>>>>>>>> SYNC
+[2024-04-18T05:49:07.527Z] [[32minfo[39m]: <got session>
+[2024-04-18T05:49:07.527Z] [[32minfo[39m]: Recieved request: {"domain":"ONDC:FIS12","location":{"country":{"code":"IND"},"city":{"code":"*"}},"version":"2.0.0","action":"on_update","bap_id":"fis-buyer-staging.ondc.org","bap_uri":"https://22e3-59-145-217-117.ngrok-free.app/ondc","transaction_id":"7324abfa-2615-408e-bb3a-7f1d5eb58ec7","message_id":"da66d2d8-197c-4b34-8bce-9fab2efa2247","ttl":"PT30M","timestamp":"2024-04-18T05:49:07.067Z","bpp_id":"fis-staging.ondc.org/ondc-seller","bpp_uri":"https://fis-staging.ondc.org/ondc-seller/"}
+[2024-04-18T05:49:07.539Z] [[31merror[39m]: {}
