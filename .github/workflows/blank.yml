@@ -20,16 +20,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
-        run: |
-          echo "${{secrets.SSH_PRIVATE_KEY}}"
-
-
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Deploy Protocol Server
+      - name: Deploy Protocol Server BPP
         run: |
           ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
           cd /home/ahsan_witslab/projects/protocol_server_seller_deploy
@@ -42,12 +37,21 @@ jobs:
           cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
           sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true && sudo docker build -t protocol_server . && sudo docker run -p 5600:5600 --name protocol_server_container -d protocol_server && exit 
           EOF
+
+      - name: Deploy Protocol Server BPP
+        run: |
+          ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
+          cd /home/ahsan_witslab/projects/protocol_server_seller_deploy
+          ls
+          # echo "cleaning up folder"
+          # rm -rf protocol-server-engine 
+          # echo "rebuilding the folder"
+          # git clone https://github.com/mofahsan/protocol-server-engine.git
+          # cd protocol-server-engine
+          # git checkout dev
+          # cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
+          # sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true && sudo docker build -t protocol_server . && sudo docker run -p 5600:5600 --name protocol_server_container -d protocol_server && exit 
+          EOF
           
 
         
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
