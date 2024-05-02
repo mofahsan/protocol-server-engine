@@ -3,6 +3,6 @@ WORKDIR /app
 COPY package.json .
 COPY . . 
 RUN npm install
-EXPOSE 5500
+EXPOSE 5600
 CMD ["node","index"]
 
