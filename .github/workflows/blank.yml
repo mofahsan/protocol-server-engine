@@ -42,7 +42,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
           cd /home/ahsan_witslab/projects/protocol_server_seller_deploy
-          ls
+          mkdir test
           # echo "cleaning up folder"
           # rm -rf protocol-server-engine 
           # echo "rebuilding the folder"
