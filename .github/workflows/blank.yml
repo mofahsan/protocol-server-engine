@@ -41,7 +41,7 @@ jobs:
           git checkout dev
           npm install
           cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
-          docker stop protocol_server_container && docker build -t protocol_server . && docker run -p 5600:5600 --name protocol_server_container  protocol_server
+          sudo docker stop protocol_server_container && sudo docker build -t protocol_server . && sudo docker run -p 5600:5600 --name protocol_server_container  protocol_server
           exit
           EOF
 
