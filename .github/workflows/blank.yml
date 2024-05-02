@@ -40,17 +40,9 @@ jobs:
           cd protocol-server-engine
           git checkout dev
           cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
-          sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true
-          sudo docker build -t protocol_server . 
-          sudo docker run -p 5600:5600 --name protocol_server_container -d protocol_server
-          
-          echo "Waiting for container to start..."
-          until sudo docker inspect -f '{{.State.Running}}' protocol_server_container | grep -q "true"; do
-            sleep 1
-          done
-          echo "Container started successfully"
-          exit 0
+          sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true && sudo docker build -t protocol_server . && sudo docker run -p 5600:5600 --name protocol_server_container -d protocol_server
           EOF
+          
 
         
 
