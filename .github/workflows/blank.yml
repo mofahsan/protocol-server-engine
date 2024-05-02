@@ -24,7 +24,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Deploy Protocol Server BPP
+      - name: Deploy Protocol Server bpp
         run: |
           ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
           cd /home/ahsan_witslab/projects/protocol_server_seller
@@ -35,10 +35,10 @@ jobs:
           cd protocol-server-engine
           git checkout dev
           cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
-          sudo docker stop protocol_server_BPP || true && sudo docker rm -f protocol_server_BPP || true && sudo docker build -t protocol_server_image_BPP . && sudo docker run -p 5500:5500 --name protocol_server_BPP -d protocol_server_image_BPP && exit 
+          sudo docker stop protocol_server_bpp || true && sudo docker rm -f protocol_server_bpp || true && sudo docker build -t protocol_server_image_bpp . && sudo docker run -p 5500:5500 --name protocol_server_bpp -d protocol_server_image_bpp && exit 
           EOF
 
-      - name: Deploy Protocol Server BAP
+      - name: Deploy Protocol Server bap
         run: |
           ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
           cd /home/ahsan_witslab/projects
@@ -49,7 +49,7 @@ jobs:
           cd protocol-server-engine
           git checkout dev
           cp /home/ahsan_witslab/projects/env/protocol_server_buyer.env .env
-          sudo docker stop protocol_server_BAP || true && sudo docker rm -f protocol_server_BAP || true && sudo docker build -t protocol_server_image_BAP . && sudo docker run -p 4100:4100 --name protocol_server_BAP -d protocol_server_image_BAP && exit 
+          sudo docker stop protocol_server_bap || true && sudo docker rm -f protocol_server_bap || true && sudo docker build -t protocol_server_image_bap . && sudo docker run -p 4100:4100 --name protocol_server_bap -d protocol_server_image_bap && exit 
           EOF
           
 
