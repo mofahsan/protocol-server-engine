@@ -41,7 +41,7 @@ jobs:
           git checkout dev
           cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
           sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true && sudo docker build -t protocol_server . && sudo docker run -p 5600:5600 --name protocol_server_container -d protocol_server
-          exit
+          exit 0;
           EOF
 
         
