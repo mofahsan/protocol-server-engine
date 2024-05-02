@@ -32,8 +32,15 @@ jobs:
       - name: Run SSH command
         run: |
           ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
-          cd /home/ahsan_witslab/projects/protocol_server_seller
-          rm -rf temp/protocol-server-engine 
+          cd /home/ahsan_witslab/projects/protocol_server_seller_deploy
+          echo "cleaning up folder"
+          rm -rf protocol-server-engine 
+          echo "rebuilding the folder"
+          git clone https://github.com/mofahsan/protocol-server-engine.git
+          cd protocol-server-engine
+          npm install
+          cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
+          mkdir taskcompleted
           exit
           EOF
 
