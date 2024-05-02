@@ -27,7 +27,7 @@ jobs:
       - name: Deploy Protocol Server BPP
         run: |
           ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
-          cd /home/ahsan_witslab/projects/protocol_server_seller_deploy
+          cd /home/ahsan_witslab/projects/protocol_server_seller
           echo "cleaning up folder"
           rm -rf protocol-server-engine 
           echo "rebuilding the folder"
@@ -35,22 +35,21 @@ jobs:
           cd protocol-server-engine
           git checkout dev
           cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
-          sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true && sudo docker build -t protocol_server . && sudo docker run -p 5600:5600 --name protocol_server_container -d protocol_server && exit 
+          sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true && sudo docker build -t protocol_server . && sudo docker run -p 5500:5500 --name protocol_server_container -d protocol_server && exit 
           EOF
 
-      - name: Deploy Protocol Server BPP
+      - name: Deploy Protocol Server BAP
         run: |
           ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
-          cd /home/ahsan_witslab/projects/protocol_server_seller_deploy
-          mkdir test
-          # echo "cleaning up folder"
-          # rm -rf protocol-server-engine 
-          # echo "rebuilding the folder"
-          # git clone https://github.com/mofahsan/protocol-server-engine.git
-          # cd protocol-server-engine
-          # git checkout dev
-          # cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
-          # sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true && sudo docker build -t protocol_server . && sudo docker run -p 5600:5600 --name protocol_server_container -d protocol_server && exit 
+          cd /home/ahsan_witslab/projects
+          echo "cleaning up folder"
+          rm -rf protocol-server-engine 
+          echo "rebuilding the folder"
+          git clone https://github.com/mofahsan/protocol-server-engine.git
+          cd protocol-server-engine
+          git checkout dev
+          cp /home/ahsan_witslab/projects/env/protocol_server_buyer.env .env
+          sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true && sudo docker build -t protocol_server . && sudo docker run -p 4100:4100 --name protocol_server_container -d protocol_server && exit 
           EOF
           
 
