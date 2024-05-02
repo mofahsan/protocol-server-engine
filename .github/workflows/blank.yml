@@ -25,17 +25,17 @@ jobs:
           echo "${{secrets.SSH_PRIVATE_KEY}}"
 
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Run SSH command
-        run: |
-          ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
-          cd /home/ahsan_witslab/projects/protocol_server_seller
-          rm -rf temp/protocol-server-engine 
-          # Add more commands here if needed
-          EOF
+      # - name: Set up SSH
+      #   uses: webfactory/ssh-agent@v0.5.3
+      #   with:
+      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      # - name: Run SSH command
+      #   run: |
+      #     ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
+      #     cd /home/ahsan_witslab/projects/protocol_server_seller
+      #     rm -rf temp/protocol-server-engine 
+      #     # Add more commands here if needed
+      #     EOF
 
         
 
