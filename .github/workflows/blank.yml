@@ -34,7 +34,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
           cd /home/ahsan_witslab/projects/protocol_server_seller
           rm -rf temp/protocol-server-engine 
-          # Add more commands here if needed
+          exit
           EOF
 
         
