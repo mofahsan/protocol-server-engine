@@ -38,9 +38,10 @@ jobs:
           echo "rebuilding the folder"
           git clone https://github.com/mofahsan/protocol-server-engine.git
           cd protocol-server-engine
+          git checkout dev
           npm install
           cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
-          mkdir taskcompleted
+          docker stop protocol_server_container && docker build -t protocol_server . && docker run -p 5600:5600 --name protocol_server_container  protocol_server
           exit
           EOF
 
