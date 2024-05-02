@@ -22,7 +22,7 @@ jobs:
 
       - name: Run a one-line script
         run: |
-          echo ${{secrets.SSH_PRIVATE_KEY}}
+          echo "${{secrets.SSH_PRIVATE_KEY}}"
 
 
       - name: Set up SSH
