@@ -29,7 +29,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Run SSH command
+      - name: Deploy Protocol Server
         run: |
           ssh -o StrictHostKeyChecking=no -tt ${{ secrets.USER}}@${{ secrets.HOST }} <<EOF
           cd /home/ahsan_witslab/projects/protocol_server_seller_deploy
@@ -41,7 +41,10 @@ jobs:
           git checkout dev
           cp /home/ahsan_witslab/projects/env/protocol_server_seller.env .env
           sudo docker stop protocol_server_container || true && sudo docker rm -f protocol_server_container || true && sudo docker build -t protocol_server . && sudo docker run -p 5600:5600 --name protocol_server_container -d protocol_server
+          echo deploying  
+          exit
           EOF
+          exit
           
 
         
